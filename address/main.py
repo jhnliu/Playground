@@ -18,6 +18,14 @@ def main():
   # File uploader
   with tab1:
 
+    # Instructions
+    st.header("Guidelines")
+    st.write("This tool extracts the district and confidence score of an address."
+             " To get started, upload an Excel or CSV file containing a column named `office_address`."
+             " The tool will add two columns to the table: `District` and `Confidence Score`.")
+    st.divider()
+
+
     uploaded_file = st.file_uploader("Upload an Excel or CSV file", type=["xlsx", "csv"])
 
     if uploaded_file is not None:
@@ -44,10 +52,18 @@ def main():
             df['Confidence Score'] = scores
             st.dataframe(df)  # Display the updated table
         else:
-            st.error("The uploaded file does not contain a column named 'office_address'.")
+            st.error("The uploaded file does not contain a column named 'office_address'. Make sure the column is named correctly.")
 
 
   with tab2:
+
+    # Instructions
+    st.header("Guidelines")
+    st.write("This tool extracts the district of an address."
+             " To get started, enter an address in the text box below."
+             " The tool will display the district and region in both English and Chinese.")
+    st.divider()
+
     address = st.text_input("Enter an address:")
 
 
